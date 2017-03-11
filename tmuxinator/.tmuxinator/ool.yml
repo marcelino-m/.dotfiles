@@ -1,0 +1,22 @@
+# ~/.tmuxinator/ool.yml
+
+name: ool
+root: ~/lab/ool
+pre: ./init.sh  #start redis 
+
+startup_window: bash
+
+windows:
+  - redis-cli: docker run -it --link redis-ool:redis --name redis-cli  --rm redis redis-cli -h redis -p 6379
+  - ool:
+      layout: even-vertical
+      panes:
+        - cd nool-ts && npm start
+        - cd nool-as && npm start
+        - cd nool-w  && npm start
+  - bash:
+  
+        
+        
+      
+    
