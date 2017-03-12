@@ -2,7 +2,14 @@
 
 name: ool
 root: ~/lab/ool
-pre: ./init.sh  #start redis 
+pre: |
+  if [ ! "$(docker ps -q -f name=redis-ool)" ]; then
+    if [ "$(docker ps -aq  -f name=redis-ool)" ]; then
+        docker start redis-ool
+    fi
+    docker run -d --name redis-ool -p 6379:6379  redis
+  fi
+
 
 startup_window: bash
 
