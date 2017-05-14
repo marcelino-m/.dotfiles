@@ -1,3 +1,5 @@
+source ~/.bash_aliases
+
 # customize keys
 setxkbmap -option caps:none
 xmodmap -e "keycode 66 = Return"
