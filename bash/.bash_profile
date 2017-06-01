@@ -1,37 +1,46 @@
+source ~/.bash_aliases
+
 # customize keys
 setxkbmap -option caps:none
 xmodmap -e "keycode 66 = Return"
 
 export EDITOR="emacsclient -t"
-
 export PATH=$PATH:/home/marcelo/.local/bin
 
+
 #NVM
-export NVM_DIR="/home/marcelo/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+if [ -d ~/.nvm ]; then
+    export NVM_DIR="/home/marcelo/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+fi
 
-#LESS
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-export LESS=' -R '
-
-export GTAGSCONF=/home/marcelo/.local/share/gtags/gtags.conf
-export GTAGSLABEL=pygments
-
-export PATH="/home/marcelo/.cask/bin:$PATH"
-
-#ANDROID
-ANDROIDE_HOME="/home/marcelo/.android/android-sdk-linux/"
-export PATH="$ANDROIDE_HOME/tools:$PATH"
-export PATH="$ANDROIDE_HOME/platform-tools:$PATH"
+#LESS HIGHLIGHT
+if [ -f /usr/share/source-highlight/src-hilite-lesspipe.sh ]; then
+    export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+    export LESS=' -R '
+fi
 
 #PYENV
-export PATH="$PATH:/home/marcelo/.pyenv/bin"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+if [ -d ~/.pyenv ]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv init -)"
+fi
 
 #RVM
-export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+if [ -d ~/.rvm ]; then
+    export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+fi
 
-#TMUXINATOR
-source ~/.tmuxinator-complete.bash
+
+
+#TMUX
+source ~/.tmux.complete.bash
+source ~/.tmuxinator.complete.bash
+
+#DOCKER ADDONS
+source ~/.docker-compose.complete.bash
+source ~/.docker-machine.complete.bash
+source ~/.docker-machine-wrapper.complete.bash

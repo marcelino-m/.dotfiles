@@ -1,17 +1,19 @@
-# ~/.tmuxinator/castor.yml
+# ~/.tmuxinator/captor.yml
 
 name: captor
 root: ~/lab/castor
-pre: docker start captor-db || docker run --name captor-db -p 5432:5432 -v  pgdata_captor_v1:/var/lib/postgresql/data  -e POSTGRES_PASSWORD=postgres -d postgres
+
+startup_window: bash
 
 windows:
   - dbschema: docker run -it --rm -e DISPLAY=$DISPLAY --net=host  -v /tmp/.X11-unix:/tmp/.X11-unix -v /home/marcelo/lab:/home/dbschema/lab dbschema
   - gateway:
       root: ~/lab/castor/gateway
       panes:
+        - npm run start-captordb
         - nodemon index.js
   - capturador:
       root: ~/lab/castor/arisweb
       panes:
-        - npm start
+        - npm run start-captor -- --port 8080
   - bash:

@@ -1,0 +1,17 @@
+# ~/.tmuxinator/repgcial.yml
+
+name: repgcial
+root: ~/lab/castor
+
+startup_window: bash
+
+windows:
+  - gateway:
+      root: ~/lab/castor/gateway
+      panes:
+        - nodemon index.js
+  - repgcial:
+      root: ~/lab/castor/arisweb
+      panes:
+        - npm run start-repgcial -- --port 8081
+  - bash:
