@@ -34,8 +34,8 @@ if [ -d ~/.rvm ]; then
     [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 fi
 
-if [[ -d ~/.my-gopkg ]]; then
-    export GOPATH="$HOME/.my-gopkg"
+if [[ -d $HOME/lab/golang/ ]]; then
+    export GOPATH="$HOME/lab/golang/"
 fi
 
 #TMUX
