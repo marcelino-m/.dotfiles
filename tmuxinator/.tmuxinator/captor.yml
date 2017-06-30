@@ -6,12 +6,10 @@ root: ~/lab/castor
 startup_window: bash
 
 windows:
-  - dbschema: docker run -it --rm -e DISPLAY=$DISPLAY --net=host  -v /tmp/.X11-unix:/tmp/.X11-unix -v /home/marcelo/lab:/home/dbschema/lab dbschema
   - gateway:
       root: ~/lab/castor/gateway
       panes:
-        - npm run start-captordb
-        - nodemon index.js
+        - npm run start-captordb && npm start
   - capturador:
       root: ~/lab/castor/arisweb
       panes:
