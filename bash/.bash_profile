@@ -46,3 +46,6 @@ source ~/.tmuxinator.complete.bash
 source ~/.docker-compose.complete.bash
 source ~/.docker-machine.complete.bash
 source ~/.docker-machine-wrapper.complete.bash
+
+#CUSTOM_PROMPT PS1
+source ~/.prompt

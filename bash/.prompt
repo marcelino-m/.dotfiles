@@ -1,0 +1,7 @@
+source ~/.color
+
+SCM_THEME_PROMPT_DIRTY=" ${bold_red}✗${normal}"
+SCM_THEME_PROMPT_CLEAN=" ${bold_green}✓${normal}"
+
+
+PS1="\n${bold_red}┌─[${cyan}\w${normal}${bold_red}]\n└─▪${normal} "
