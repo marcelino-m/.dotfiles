@@ -1,7 +1,49 @@
 source ~/.color
 
-SCM_THEME_PROMPT_DIRTY=" ${bold_red}✗${normal}"
-SCM_THEME_PROMPT_CLEAN=" ${bold_green}✓${normal}"
+SCM_THEME_PROMPT_DIRTY="✗"
+SCM_THEME_PROMPT_CLEAN="✓"
 
+repo_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+}
 
-PS1="\n${bold_red}┌─[${cyan}\w${normal}${bold_red}]\n└─▪${normal} "
+repo_isnot_dirty() {
+    git diff --quiet && git diff --cached --quiet
+}
+
+repo_isin() {
+    git -C $(pwd) 2>/dev/null rev-parse
+}
+
+repo_string() {
+    if repo_isin; then
+        local branch=$(repo_branch)
+        local nuntack=""
+        local n=$(git ls-files --other --exclude-standard | wc -l)
+        if [ $n -gt 0 ]; then
+            nuntack=" ${n}U"
+        fi
+        if repo_isnot_dirty; then
+            echo -e -n  "${echo_bold_blue}[${echo_bold_yellow} ${SCM_THEME_PROMPT_CLEAN} ${branch}${echo_yellow}${nuntack} ${echo_bold_blue}]"
+        else
+            local nmod=""
+            local nmods=""
+
+            n=$(git diff --numstat | wc -l )
+            if [ "$n" -gt 0 ]; then
+                nmod="${n}M"
+            fi
+
+            n=$(git diff --cached --numstat | wc -l )
+            if [ "$n" -gt 0 ]; then
+                nmods=" ${n}S"
+            fi
+
+            echo -e -n "${echo_bold_blue}[${echo_bold_orange} ${SCM_THEME_PROMPT_DIRTY} ${branch} ${echo_orange}${nmod}${nmods}${nuntack} ${echo_bold_blue}]"
+        fi
+    else
+        echo -n ""
+    fi
+}
+
+PS1="\n${bold_blue}┌─[${cyan} \w ${bold_blue}]\$(repo_string)\n${bold_blue}└─▪${normal} "
