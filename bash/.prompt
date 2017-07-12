@@ -24,7 +24,7 @@ repo_string() {
             nuntack=" ${n}U"
         fi
         if repo_isnot_dirty; then
-            echo -e -n  "${echo_bold_blue}[${echo_bold_yellow} ${SCM_THEME_PROMPT_CLEAN} ${branch}${echo_yellow}${nuntack} ${echo_bold_blue}]"
+            echo -e -n  "${echo_bold_purple}[${echo_bold_yellow} ${SCM_THEME_PROMPT_CLEAN} ${branch}${echo_yellow}${nuntack} ${echo_bold_purple}]"
         else
             local nmod=""
             local nmods=""
@@ -39,11 +39,11 @@ repo_string() {
                 nmods=" ${n}S"
             fi
 
-            echo -e -n "${echo_bold_blue}[${echo_bold_orange} ${SCM_THEME_PROMPT_DIRTY} ${branch} ${echo_orange}${nmod}${nmods}${nuntack} ${echo_bold_blue}]"
+            echo -e -n "${echo_bold_purple}[${echo_bold_orange} ${SCM_THEME_PROMPT_DIRTY} ${branch} ${echo_orange}${nmod}${nmods}${nuntack} ${echo_bold_purple}]"
         fi
     else
         echo -n ""
     fi
 }
 
-PS1="\n${bold_blue}┌─[${cyan} \w ${bold_blue}]\$(repo_string)\n${bold_blue}└─▪${normal} "
+PS1="\n${bold_purple}┌─[${cyan} \w ${bold_purple}]\$(repo_string)\n${bold_purple}└─▪${normal} "
