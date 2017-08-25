@@ -13,6 +13,7 @@ export PATH=$PATH:/home/marcelo/.local/bin
 if [ -d ~/.nvm ]; then
     export NVM_DIR="/home/marcelo/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
 #LESS HIGHLIGHT
@@ -35,8 +36,9 @@ if [ -d ~/.rvm ]; then
     [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 fi
 
-if [[ -d $HOME/lab/golang/ ]]; then
-    export GOPATH="$HOME/lab/golang/"
+if [[ -d $HOME/lab/go/ ]]; then
+    export GOPATH="$HOME/lab/go"
+    export PATH="$PATH:$GOPATH/bin"
 fi
 
 #TMUX
