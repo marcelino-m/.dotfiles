@@ -2,7 +2,8 @@ source ~/.bash_aliases
 
 # customize keys
 setxkbmap -option caps:none
-xmodmap -e "keycode 66 = Return"
+xmodmap -e "remove Mod4 = Hyper_L" -e "add Mod3 = Hyper_L" -e "keycode 66 = Hyper_L"
+
 
 export EDITOR="emacsclient -t"
 export PATH=$PATH:/home/marcelo/.local/bin
