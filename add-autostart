@@ -1,0 +1,12 @@
+#!/bin/bash        
+mkdir -p /home/marcelo/.config/autostart-scripts
+cat >  /home/marcelo/.config/autostart-scripts/init.sh  <<-EOF
+systemctl --user import-environment DBUS_SESSION_BUS_ADDRESS
+setxkbmap -option caps:none
+xmodmap -e "remove Mod4 = Hyper_L"
+xmodmap -e "add Mod3 = Hyper_L"
+xmodmap -e "keycode 66 = Hyper_L"
+systemctl --user restart emacs
+EOF
+
+chmod u+x /home/marcelo/.config/autostart-scripts/init.sh

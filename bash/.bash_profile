@@ -3,6 +3,9 @@ source ~/.bash_aliases
 export EDITOR="emacsclient -t"
 export PATH=$PATH:/home/marcelo/.local/bin
 
+# This make available dbus for system units defined by user, me!
+systemctl --user import-environment DBUS_SESSION_BUS_ADDRESS
+
 
 #NVM
 if [ -d ~/.nvm ]; then
