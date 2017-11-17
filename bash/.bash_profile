@@ -56,3 +56,9 @@ source ~/.prompt
 # customize keys
 setxkbmap -option caps:none
 xmodmap -e "remove Mod4 = Hyper_L" -e "add Mod3 = Hyper_L" -e "keycode 66 = Hyper_L"
+
+#FZF
+if [ -f ~/.fzf.bash ]; then
+    source ~/.fzf.bash
+    export FZF_CTRL_R_OPTS='--no-height'
+fi
