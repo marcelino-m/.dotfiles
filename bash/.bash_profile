@@ -1,5 +1,6 @@
 source ~/.bash_aliases
 
+export HISTCONTROL=ignoreboth:erasedups
 export EDITOR="emacsclient -t"
 export PATH=$PATH:/home/marcelo/.local/bin
 
