@@ -26,7 +26,12 @@ if [ -d ~/.pyenv ]; then
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
-    eval "$(pyenv init -)"
+fi
+
+#PYTHON VIRTUALENV
+if [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
+    source ~/.local/bin/virtualenvwrapper.sh
+    export VIRTUAL_ENV_DISABLE_PROMPT=1
 fi
 
 #RVM

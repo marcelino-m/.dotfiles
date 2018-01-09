@@ -1,5 +1,7 @@
 source ~/.color
 
+
+## GIT
 SCM_THEME_PROMPT_DIRTY="✗"
 SCM_THEME_PROMPT_CLEAN="✓"
 
@@ -46,4 +48,19 @@ repo_string() {
     fi
 }
 
-PS1="\n${bold_purple}┌─[${cyan} \w ${bold_purple}]\$(repo_string)\n${bold_purple}└─▪${normal} "
+
+## virtualenv
+function virtualenv_info(){
+    # Get Virtual Env
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        # Strip out the path and just leave the env name
+        venv="${VIRTUAL_ENV##*/}"
+    else
+        # In case you don't have one activated
+        venv=''
+    fi
+    [[ -n "$venv" ]] && echo -e -n "${echo_bold_purple}[ ${echo_bold_green}venv ${echo_green}$venv ${echo_bold_purple}]"
+}
+
+
+PS1="\n${bold_purple}┌─[${cyan} \w ${bold_purple}]\$(repo_string)\$(virtualenv_info)\n${bold_purple}└─▪${normal} "
