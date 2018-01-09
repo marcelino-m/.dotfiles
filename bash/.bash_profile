@@ -35,10 +35,7 @@ if [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
 fi
 
 #RVM
-if [ -d ~/.rvm ]; then
-    export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
-    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-fi
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 #GO
 if [[ -d $HOME/lab/go/ ]]; then
@@ -58,12 +55,23 @@ source ~/.docker-machine-wrapper.complete.bash
 #CUSTOM_PROMPT PS1
 source ~/.prompt
 
-# customize keys
-setxkbmap -option caps:none
-xmodmap -e "remove Mod4 = Hyper_L" -e "add Mod3 = Hyper_L" -e "keycode 66 = Hyper_L"
-
 #FZF
 if [ -f ~/.fzf.bash ]; then
     source ~/.fzf.bash
     export FZF_CTRL_R_OPTS='--no-height'
 fi
+
+
+#NPM
+if [ -f ~/.npm.complete.bash ]; then
+    source ~/.npm.complete.bash
+fi
+
+#TIM
+export TIMLIB_SRC_ROOT=/home/marcelo/lab/gpsmina/timlib
+export LIB_V4D_TO_LINK=/home/marcelo/lab/gpsmina/libv4d/libv4dPaqueteGrafico.a
+export LIB_V4D_INCLUDE=/home/marcelo/lab/gpsmina/libv4d/src
+
+# customize keys
+setxkbmap -option caps:none
+xmodmap -e "remove Mod4 = Hyper_L" -e "add Mod3 = Hyper_L" -e "keycode 66 = Hyper_L"

@@ -1,8 +1,9 @@
 [user]
 	name = Marcelo M. A
-	email = mail@mail.mail
+	email = marcelo.munoz@timining.cl
 [alias]
 	s = status
 	d = diff
 	dc = diff --cached
 	last = log -1 HEAD
+	co = checkout
