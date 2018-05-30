@@ -1,0 +1,64 @@
+source ~/.bash_aliases
+
+# Icons in Terminal
+source ~/.local/share/icons-in-terminal/icons_bash.sh
+
+#CUSTOM_PROMPT PS1
+source ~/.prompt
+
+#PIPENV COMPLETE
+if [ -f ~/.pipenv_complete ]; then
+    source ~/.pipenv_complete
+elif [ -x "$(command -v pipenv)" ]; then
+     pipenv --completion > ~/.pipenv_complete
+     source ~/.pipenv_complete
+fi
+
+# This make available dbus for system units defined by user, me!
+systemctl --user import-environment DBUS_SESSION_BUS_ADDRESS
+
+#FZF
+if [ -f ~/.fzf.bash ]; then
+    source ~/.fzf.bash
+fi
+
+#CASK
+# if [ -d ~/.cask/ ]; then
+#     export PATH="$PATH:/home/marcelo/.cask/bin"
+# fi
+
+#RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+#NPM
+#if [ -f ~/.npm.complete.bash ]; then
+#    source ~/.npm.complete.bash
+#fi
+
+#NVM
+# if [ -d ~/.nvm ]; then
+#     export NVM_DIR="/home/marcelo/.nvm"
+#     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# fi
+
+#TMUX
+source ~/.tmux.complete.bash
+source ~/.tmuxinator.complete.bash
+
+
+#PYTHON VIRTUALENV
+if [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
+    source ~/.local/bin/virtualenvwrapper.sh
+    export VIRTUAL_ENV_DISABLE_PROMPT=1
+fi
+
+
+#DOCKER ADDONS
+source ~/.docker-compose.complete.bash
+source ~/.docker-machine.complete.bash
+source ~/.docker-machine-wrapper.complete.bash
+
+# customize keys
+setxkbmap -option caps:none
+xmodmap -e "remove Mod4 = Hyper_L" -e "add Mod3 = Hyper_L" -e "keycode 66 = Hyper_L"

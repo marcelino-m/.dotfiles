@@ -2,8 +2,13 @@
 	name = Marcelo M. A
 	email = marcelo.munoz@timining.cl
 [alias]
-	s = status
-	d = diff
+	s  = status --untracked-files=normal
+        sa = status --untracked-files=all
+	d  = diff
 	dc = diff --cached
 	last = log -1 HEAD
 	co = checkout
+        us = reset HEAD
+[status]
+
+showUntrackedFiles = all
