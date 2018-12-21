@@ -1,3 +1,4 @@
+# -*- mode: sh; -*-
 source ~/.color
 
 
@@ -19,29 +20,39 @@ repo_isin() {
 
 repo_string() {
     if repo_isin; then
-        local branch=$(repo_branch)
-        local nuntack=""
-        local n=$(git ls-files --other --exclude-standard | wc -l)
-        if [ $n -gt 0 ]; then
-            nuntack=" ${n}U"
+        local branch="$(repo_branch)"
+        if [ -n "$branch" ]; then
+            branch=" $branch"
         fi
-        if repo_isnot_dirty; then
-            echo -e -n  "${echo_bold_purple}[${echo_bold_yellow} ${SCM_THEME_PROMPT_CLEAN} ${branch}${echo_orange}${nuntack} ${echo_bold_purple}]"
+
+        local gstatus="$(git status --porcelain)"
+
+        local nuntack=$(echo "$gstatus" | grep -E '^\?\?' | wc -l)
+        if [ $nuntack -gt 0 ]; then
+            nuntack=" ${nuntack}U"
         else
-            local nmod=""
-            local nmods=""
+            nuntack=""
+        fi
 
-            n=$(git diff --numstat | wc -l )
-            if [ "$n" -gt 0 ]; then
-                nmod=" ${n}M"
+        if repo_isnot_dirty; then
+            echo -e -n  "${echo_bold_purple}[${echo_bold_yellow}${branch}${echo_orange}${nuntack} ${echo_bold_purple}]"
+        else
+
+            local nmod=$(echo "$gstatus" | grep -E '^ M' | wc -l)
+            if [ $nmod -gt 0 ]; then
+                nmod=" ${nmod}M"
+            else
+                nmod=""
             fi
 
-            n=$(git diff --cached --numstat | wc -l )
-            if [ "$n" -gt 0 ]; then
-                nmods=" ${n}S"
+            local nmods=$(echo "$gstatus" | grep -E '^A' | wc -l)
+            if [ $nmods -gt 0 ]; then
+                nmods=" ${nmods}S"
+            else
+                nmods=""
             fi
 
-            echo -e -n "${echo_bold_purple}[${echo_bold_red} ${SCM_THEME_PROMPT_DIRTY} ${branch}${echo_green}${nmods}${echo_yellow}${nmod}${echo_orange}${nuntack} ${echo_bold_purple}]"
+            echo -e -n "${echo_bold_purple}[${echo_bold_red}${branch}${echo_green}${nmods}${echo_yellow}${nmod}${echo_orange}${nuntack} ${echo_bold_purple}]"
         fi
     else
         echo -n ""
