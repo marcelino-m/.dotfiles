@@ -4,6 +4,7 @@
 [alias]
 	s  = status --untracked-files=normal
         sa = status --untracked-files=all
+        sn = status --untracked-files=no
 	d  = diff
 	dc = diff --cached
 	last = log -1 HEAD
