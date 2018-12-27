@@ -7,25 +7,28 @@ SCM_THEME_PROMPT_DIRTY="✗"
 SCM_THEME_PROMPT_CLEAN="✓"
 
 repo_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+    git -C $groot branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
 repo_isnot_dirty() {
-    git diff --quiet && git diff --cached --quiet
+    git -C $groot diff --quiet && git diff --cached --quiet
 }
 
-repo_isin() {
-    git -C $(pwd) 2>/dev/null rev-parse
+repo_root() {
+    git rev-parse --absolute-git-dir 2>/dev/null
 }
 
 repo_string() {
-    if repo_isin; then
+    local groot="`repo_root`"
+    if [ "${groot}" != "" ]; then
+        groot=$(dirname $groot)
+
         local branch="$(repo_branch)"
         if [ -n "$branch" ]; then
             branch=" $branch"
         fi
 
-        local gstatus="$(git status --porcelain)"
+        local gstatus="$(git -C ${groot} status --porcelain)"
 
         local nuntack=$(echo "$gstatus" | grep -E '^\?\?' | wc -l)
         if [ $nuntack -gt 0 ]; then
