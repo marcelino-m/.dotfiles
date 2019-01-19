@@ -15,14 +15,19 @@ repo_isnot_dirty() {
 }
 
 repo_root() {
-    git rev-parse --absolute-git-dir 2>/dev/null
+
+    if [ "`git rev-parse --is-inside-work-tree 2>/dev/null`" = "true" ]; then
+        git rev-parse --show-toplevel
+    elif [ "`git rev-parse --is-inside-git-dir 2>/dev/null`" = "true" ]; then
+        dirname "$(git rev-parse --absolute-git-dir)"
+    else
+        echo -n ""
+    fi
 }
 
 repo_string() {
     local groot="`repo_root`"
     if [ "${groot}" != "" ]; then
-        groot=$(dirname $groot)
-
         local branch="$(repo_branch)"
         if [ -n "$branch" ]; then
             branch=" $branch"
