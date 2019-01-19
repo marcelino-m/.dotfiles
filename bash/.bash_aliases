@@ -1,6 +1,6 @@
+# -*- mode: sh; -*-
 
 alias et="emacsclient -t"
-alias ed="emacs --daemon"
 
 function ec () {
          emacsclient -cq "$@" &
@@ -9,24 +9,5 @@ function ec () {
 function dbschema () {
          docker run -d -it --rm -e DISPLAY=$DISPLAY --net=host  -v /tmp/.X11-unix:/tmp/.X11-unix -v /home/marcelo/lab:/home/dbschema/lab marcelino/dbschema
 }
-
-function magit () {
-         emacsclient -t --eval "(let ((display-buffer-alist \`((,(rx bol ?*?m?a?g?i?t?:? ) display-buffer-same-window) ,display-buffer-alist))) (magit-status))"
-}
-
-function papers () {
-    ssh ssh2.inf.utfsm.cl -f -l mamunoz -ND 8080 ; chromium-browser --proxy-server=socks5://localhost:8080 &
-}
-
-#GIT
-# See: https://brbsix.github.io/2015/11/23/perform-tab-completion-for-aliases-in-bash/
-
-alias g=git
-_completion_loader git
-complete -o bashdefault -o default -o nospace -F __git_wrap__git_main g
-
-alias dk=docker
-_completion_loader docker
-complete -F _docker dk
 
 alias v=less
