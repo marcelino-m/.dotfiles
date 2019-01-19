@@ -11,5 +11,6 @@
 	co = checkout
         us = reset HEAD
 [status]
-
-showUntrackedFiles = all
+        showUntrackedFiles = all
+[diff]
+	algorithm = patience
