@@ -38,7 +38,7 @@ repo_string() {
             branch=" $branch"
         fi
 
-        local gstatus="$(git -C ${groot} status --porcelain)"
+        local gstatus="$(git -C ${groot} status --porcelain --untracked)"
 
         local nuntack=$(echo "$gstatus" | grep -E '^\?\?' | wc -l)
         if [ $nuntack -gt 0 ]; then
