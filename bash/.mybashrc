@@ -20,10 +20,6 @@ if [ -f ~/.npm.complete.bash ]; then
    source ~/.npm.complete.bash
 fi
 
-#TMUX
-source ~/.tmux.complete.bash
-source ~/.tmuxinator.complete.bash
-
 
 #PYTHON VIRTUALENV
 export VIRTUAL_ENV_DISABLE_PROMPT=1
