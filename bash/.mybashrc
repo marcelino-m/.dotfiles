@@ -5,24 +5,3 @@ source ~/.prompt
 
 # This make available dbus for system units defined by user, me!
 systemctl --user import-environment DBUS_SESSION_BUS_ADDRESS
-
-#FZF
-if [ -f ~/.fzf.bash ]; then
-    source ~/.fzf.bash
-fi
-
-
-#RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-# NPM
-if [ -f ~/.npm.complete.bash ]; then
-   source ~/.npm.complete.bash
-fi
-
-
-#PYTHON VIRTUALENV
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-if [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
-    source ~/.local/bin/virtualenvwrapper.sh
-fi
