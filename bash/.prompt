@@ -1,33 +1,32 @@
 # -*- mode: sh; -*-
 
-normal="\[\e[0m\]"
-echo_cyan="\033[0;36m"
+source ~/.color
 
-bold_purple="\[\e[35;1m\]"
-echo_bold_purple="\033[35;1m"
-echo_orange="\033[0;91m"
+color_dir=$cyan
+echo_color_dir=$echo_cyan
 
-echo_bold_red="\033[31;1m"
-echo_red="\033[0;31m"
+color_par=$bold_purple
+echo_color_par=$echo_bold_purple
 
-echo_yellow="\033[0;33m"
-echo_bold_yellow="\033[33;1m"
+color_branch_ok=$yellow
+echo_color_branch_ok=$echo_yellow
 
-echo_bold_green="\033[32;1m"
-echo_green="\033[0;32m"
-
-
-
-color_dir=$echo_cyan
-color_par=$echo_bold_purple
-color_branch_ok=$echo_yellow
 color_branch_dirty=$echo_orange
+echo_color_branch_dirty=$echo_orange
+
 color_mod=$echo_yellow
+echo_color_mod=$echo_yellow
+
 color_add=$echo_green
+echo_color_add=$echo_green
+
 color_unt=$echo_orange
+echo_color_unt=$echo_orange
+
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    color_par=$echo_bold_red
+    color_par=$bold_red
+    echo_color_dir=$echo_bold_red
 fi
 
 repo_branch() {
@@ -67,7 +66,7 @@ repo_string() {
         fi
 
         if repo_isnot_dirty; then
-            echo -e -n  "${color_par}[${color_branch_ok}${branch}${color_unt}${nuntack} ${color_par}]"
+            echo -e -n  "${echo_color_par}[${echo_color_branch_ok}${branch}${echo_color_unt}${nuntack} ${echo_color_par}]"
         else
 
             local nmod=$(echo "$gstatus" | grep -E '^ M' | wc -l)
@@ -84,7 +83,7 @@ repo_string() {
                 nmods=""
             fi
 
-            echo -e -n "${color_par}[${color_branch_dirty}${branch}${color_add}${nmods}${color_mod}${nmod}${color_unt}${nuntack} ${color_par}]"
+            echo -e -n "${echo_color_par}[${echo_color_branch_dirty}${branch}${echo_color_add}${nmods}${echo_color_mod}${nmod}${echo_color_unt}${nuntack} ${echo_color_par}]"
         fi
     else
         echo -n ""
@@ -106,4 +105,4 @@ function virtualenv_info(){
 }
 
 
-PS1=$(echo "\n${color_par}┌─[$color_dir \w ${color_par}]\$(repo_string)\$(virtualenv_info)\n${color_par}└─▪${normal} ")
+PS1="\n${color_par}┌─[${color_dir} \w ${color_par}]\$(repo_string)\$(virtualenv_info)\n${color_par}└─▪${normal} "
