@@ -2,6 +2,9 @@
 
 source ~/.color
 
+color_normal=$normal
+echo_color_normal=$echo_normal
+
 color_dir=$cyan
 echo_color_dir=$echo_cyan
 
@@ -92,6 +95,7 @@ repo_string() {
 
 
 ## virtualenv
+#XXX: This needs to be fixed
 function virtualenv_info(){
     # Get Virtual Env
     if [[ -n "$VIRTUAL_ENV" ]]; then
@@ -105,4 +109,4 @@ function virtualenv_info(){
 }
 
 
-PS1="\n${color_par}┌─[${color_dir} \w ${color_par}]\$(repo_string)\$(virtualenv_info)\n${color_par}└─▪${normal} "
+PS1="\n${color_par}┌─[${color_dir} \w ${color_par}]\$(repo_string)\$(virtualenv_info)\n${color_par}└─▪${color_normal} "
