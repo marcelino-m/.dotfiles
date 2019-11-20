@@ -95,7 +95,6 @@ repo_string() {
 
 
 ## virtualenv
-#XXX: This needs to be fixed
 function virtualenv_info(){
     # Get Virtual Env
     if [[ -n "$VIRTUAL_ENV" ]]; then
@@ -105,7 +104,7 @@ function virtualenv_info(){
         # In case you don't have one activated
         venv=''
     fi
-    [[ -n "$venv" ]] && echo -e -n "${color_par}[ ${echo_bold_green}venv ${echo_green}$venv ${color_par}]"
+    [[ -n "$venv" ]] && echo -e -n "${echo_color_par}[ ${echo_bold_green}venv ${echo_green}$venv ${echo_color_par}]"
 }
 
 
