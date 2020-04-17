@@ -29,7 +29,7 @@ echo_color_unt=$echo_orange
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
     color_par=$bold_red
-    echo_color_dir=$echo_bold_red
+    echo_color_par=$echo_bold_red
 fi
 
 repo_branch() {
