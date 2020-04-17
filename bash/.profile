@@ -14,17 +14,13 @@ fi
 
 #GO
 if [ -d "$HOME/.src/go" ]; then
+    export GO111MODULE=on
     export PATH="$PATH:$HOME/.src/go/bin"
 fi
 
 if [[ -d $HOME/lab/go/ ]]; then
     export GOPATH="$HOME/lab/go"
     export PATH="$PATH:$GOPATH/bin"
-fi
-
-if [[ -d $HOME/.python-user-base/ ]]; then
-    export PYTHONUSERBASE="$HOME/.python-user-base/"
-    export PATH="$PATH:$PYTHONUSERBASE/bin/"
 fi
 
 #FZF
@@ -44,8 +40,14 @@ if [ -d ~/.virtualenvs ]; then
     export WORKON_HOME=~/.virtualenvs
 fi
 
-#PYTHON VIRTUALENV
+#PYTHON
+#VIRTUALENV
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 if [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
     source ~/.local/bin/virtualenvwrapper.sh
+fi
+
+if [[ -d $HOME/.python-user-base/ ]]; then
+    export PYTHONUSERBASE="$HOME/.python-user-base/"
+    export PATH="$PATH:$PYTHONUSERBASE/bin/"
 fi
