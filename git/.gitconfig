@@ -1,6 +1,6 @@
 [user]
-	name = Marcelo M. A
-	email = marcelo.munoz@timining.cl
+	name  = Marcelo M. A
+	email = ma.munoz.araya@gmail.cl
 [alias]
 	s  = status --untracked-files=normal
         sa = status --untracked-files=all
