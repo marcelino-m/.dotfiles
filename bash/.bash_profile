@@ -1,2 +1,2 @@
-source .profile
-source .mybashrc
+source ~/.profile
+source ~/.bashrc

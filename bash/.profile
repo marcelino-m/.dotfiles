@@ -1,16 +1,18 @@
-export HISTCONTROL=ignoreboth:erasedups
 export EDITOR="emacsclient -t"
+
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+        . "$HOME/.bashrc"
+    fi
+fi
 
 
 if [ -d "$HOME/.local/bin" ] ; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
-#LESS HIGHLIGHT
-if [ -f /usr/share/source-highlight/src-hilite-lesspipe.sh ]; then
-    export LESSOPEN="| highlight --style=zenburn --out-format=xterm256 %s  2>/dev/null"
-    export LESS=' -R '
-fi
 
 #GO
 if [ -d "$HOME/.src/go" ]; then

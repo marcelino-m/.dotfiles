@@ -1,7 +1,0 @@
-# -*- mode: sh; -*-
-
-source ~/.bash_aliases
-source ~/.prompt
-
-# This make available dbus for system units defined by user, me!
-systemctl --user import-environment DBUS_SESSION_BUS_ADDRESS
