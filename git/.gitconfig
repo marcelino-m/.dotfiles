@@ -1,6 +1,6 @@
 [user]
-	name  = Marcelo M. A
-	email = ma.munoz.araya@gmail.cl
+	name  = Marcelo M. A.
+	email = ma.munoz.araya@gmail.com
 [alias]
 	s  = status --untracked-files=normal
         sa = status --untracked-files=all
@@ -9,8 +9,13 @@
 	dc = diff --cached
 	last = log -1 HEAD
 	co = checkout
-        us = reset HEAD
 [status]
         showUntrackedFiles = all
 [diff]
 	algorithm = patience
+[rebase]
+	autoStash = true
+[merge]
+	autoStash = true
+[pull]
+	rebase = true
