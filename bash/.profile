@@ -38,16 +38,13 @@ if [ -f ~/.npm.complete.bash ]; then
    source ~/.npm.complete.bash
 fi
 
-if [ -d ~/.virtualenvs ]; then
+
+#PYTHON
+if [ -d $HOME/.virtualenvs ]; then
     export WORKON_HOME=~/.virtualenvs
 fi
 
-#PYTHON
-#VIRTUALENV
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-if [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
-    source ~/.local/bin/virtualenvwrapper.sh
-fi
 
 if [[ -d $HOME/.python-user-base/ ]]; then
     export PYTHONUSERBASE="$HOME/.python-user-base/"
