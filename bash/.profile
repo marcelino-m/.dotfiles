@@ -40,6 +40,9 @@ fi
 
 
 #PYTHON
+
+export PIPENV_VENV_IN_PROJECT=1 # use venv in project dir
+
 if [ -d $HOME/.virtualenvs ]; then
     export WORKON_HOME=~/.virtualenvs
 fi
