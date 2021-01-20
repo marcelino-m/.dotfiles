@@ -20,8 +20,8 @@ if [ -d "$HOME/.src/go" ]; then
     export PATH="$PATH:$HOME/.src/go/bin"
 fi
 
-if [[ -d $HOME/lab/go/ ]]; then
-    export GOPATH="$HOME/lab/go"
+if [ -d ${HOME}/.go ]; then
+    export GOPATH="$HOME/.go"
     export PATH="$PATH:$GOPATH/bin"
 fi
 
