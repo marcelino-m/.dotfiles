@@ -7,3 +7,5 @@ function ec () {
 }
 
 alias v=less
+alias sclip="xclip -selection c"
+alias gclip="xclip -selection c -o"

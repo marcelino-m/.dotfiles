@@ -18,4 +18,6 @@
 [merge]
 	autoStash = true
 [pull]
-	rebase = true
+	rebase = false
+[github]
+	user = marcelino-m

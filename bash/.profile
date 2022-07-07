@@ -49,7 +49,7 @@ fi
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
-if [[ -d $HOME/.python-user-base/ ]]; then
+if [ -d $HOME/.python-user-base/ ]; then
     export PYTHONUSERBASE="$HOME/.python-user-base/"
     export PATH="$PATH:$PYTHONUSERBASE/bin/"
 fi
