@@ -54,7 +54,9 @@ case ":$PATH:" in
 esac
 
 # Rust
-. "$HOME/.cargo/env"
+if [ -d "$HOME/.cargo" ]; then
+  . "$HOME/.cargo/env"
+fi
 
 #zoxide
 eval "$(zoxide init bash)"
