@@ -12,7 +12,7 @@
 [status]
         showUntrackedFiles = all
 [diff]
-	algorithm = patience
+	algorithm = histogram
 [rebase]
 	autoStash = true
 [merge]
