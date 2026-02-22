@@ -1,23 +1,23 @@
 [user]
-	name  = Marcelo M. A.
-	email = ma.munoz.araya@gmail.com
+    name  = Marcelo M. A.
+    email = ma.munoz.araya@gmail.com
 [alias]
-	s  = status --untracked-files=normal
-        sa = status --untracked-files=all
-        sn = status --untracked-files=no
-	d  = diff
-	dc = diff --cached
-	last = log -1 HEAD
-	co = checkout
+    s  = status --untracked-files=normal
+    sa = status --untracked-files=all
+    sn = status --untracked-files=no
+    d  = diff
+    dc = diff --cached
+    last = log -1 HEAD
+    co = checkout
 [status]
         showUntrackedFiles = all
 [diff]
-	algorithm = histogram
+    algorithm = histogram
 [rebase]
-	autoStash = true
+    autoStash = true
 [merge]
-	autoStash = true
+    autoStash = true
 [pull]
-	rebase = false
+    rebase = false
 [github]
-	user = marcelino-m
+    user = marcelino-m
