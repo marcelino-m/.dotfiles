@@ -1,3 +1,9 @@
+# -*- mode: bash-ts; -*-
+
+if [ -f ~/.prompt ]; then
+    source ~/.prompt
+fi
+
 export EDITOR="emacsclient -t"
 
 if [ -d "$HOME/.local/bin" ] ; then
