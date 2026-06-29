@@ -1,9 +1,9 @@
 export EDITOR="emacsclient -t"
+export TIMEFMT=$'\e[90mcmd\e[0m \e[32m%J\e[0m\n\e[90mreal\e[0m \e[33m%E\e[0m  \e[90muser\e[0m \e[34m%U\e[0m  \e[90msys\e[0m \e[31m%S\e[0m  \e[90mcpu\e[0m \e[33;1m%P\e[0m  \e[90mmem\e[0m \e[36m%M\e[0m\e[90mKB\e[0m'
 
 if [ -d "$HOME/.local/bin" ] ; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
-
 
 #GO
 if [ -d "$HOME/.src/go" ]; then
