@@ -57,6 +57,12 @@ if command -v fzf >/dev/null 2>&1; then
     eval "$(fzf --zsh)"
 fi
 
+# opencode
+if [ -d "$HOME/.opencode/bin" ] ; then
+    export PATH="$HOME/.opencode/bin:$PATH"
+fi
+
+
 # # # atuin
 # # if command -v atuin >/dev/null 2>&1; then
 # #     eval "$(atuin init bash)"
