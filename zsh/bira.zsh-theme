@@ -1,5 +1,9 @@
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
-local user_host="%B%(!.%{$fg[red]%}.%{$fg[green]%})%n@%m%{$reset_color%} "
+if [[ -n "$SSH_CONNECTION" || -n "$SSH_CLIENT" || -n "$SSH_TTY" ]]; then
+    local user_host="%B%{$fg[magenta]%}[%n@%m]%{$reset_color%} "
+else
+    local user_host="%B%(!.%{$fg[red]%}.%{$fg[green]%})[%n@%m]%{$reset_color%} "
+fi
 local user_symbol='%(!.#.$)'
 local current_dir="%B%{$fg[blue]%}%~ %{$reset_color%}"
 local conda_prompt='$(conda_prompt_info)'
@@ -22,7 +26,7 @@ RPROMPT="%B${return_code}%b"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}‹"
 ZSH_THEME_GIT_PROMPT_SUFFIX="› %{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}●%{$fg[yellow]%}"
+ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}●%{$fg[yellow]%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[yellow]%}"
 
 ZSH_THEME_HG_PROMPT_PREFIX="$ZSH_THEME_GIT_PROMPT_PREFIX"
