@@ -17,6 +17,7 @@
     autoStash = true
 [merge]
     autoStash = true
+	conflictStyle = zdiff3
 [pull]
     rebase = false
 [github]
