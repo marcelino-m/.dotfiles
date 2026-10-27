@@ -33,7 +33,7 @@ if [ ! -d $NVM_DIR ]; then
     mkdir -p $NVM_DIR
 fi
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # pnpm
 export PNPM_HOME="/home/marcelo/.local/share/pnpm"
