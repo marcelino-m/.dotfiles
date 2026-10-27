@@ -7,6 +7,7 @@ config.initial_cols = 160
 config.initial_rows = 30
 config.enable_kitty_keyboard = true
 config.audible_bell = "Disabled"
+config.window_padding = { bottom = 0 }
 
 
 -- or, changing the font size and color scheme.
