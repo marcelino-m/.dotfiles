@@ -21,6 +21,11 @@ config.keys = {
     mods = 'SUPER',
     action = wezterm.action.DisableDefaultAssignment,
   },
+  {
+    key = 'c',
+    mods = 'SUPER',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
 }
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
