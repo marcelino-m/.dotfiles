@@ -26,6 +26,10 @@ config.keys = {
     mods = 'SUPER',
     action = wezterm.action.DisableDefaultAssignment,
   },
+  -- Free C-* (default: ActivateTab(7))
+  { key = '*', mods = 'CTRL', action = wezterm.action.DisableDefaultAssignment },
+  { key = '*', mods = 'SHIFT|CTRL', action = wezterm.action.DisableDefaultAssignment },
+  { key = '8', mods = 'SHIFT|CTRL', action = wezterm.action.DisableDefaultAssignment },
 }
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
