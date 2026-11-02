@@ -74,13 +74,10 @@ ZSH_CUSTOM=~/.dotfiles/zsh
 plugins=(
     git
     nvm
-    zsh-autosuggestions
+    fzf-tab
 )
 
 zstyle ':omz:plugins:nvm' lazy yes
-# Sourced here instead of in `plugins`: zsh-autocomplete must load before
-# compinit, which oh-my-zsh.sh runs.
-source $ZSH_CUSTOM/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
