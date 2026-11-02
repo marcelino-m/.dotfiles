@@ -82,6 +82,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Ctrl+d on an empty line doesn't exit the shell (avoids closing zellij panes).
+setopt IGNORE_EOF
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
