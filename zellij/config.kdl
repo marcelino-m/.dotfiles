@@ -173,13 +173,23 @@ keybinds clear-defaults=true {
         bind "Alt l" { MoveFocusOrTab "right"; }
         bind "Alt o" { MoveTab "right"; }
         bind "Alt Shift p" { ToggleGroupMarking; }
-        // With KKP the pane gets Alt+, (no Shift); send M-< / M-> / M-? explicitly
+        // With KKP the pane gets Alt+, (no Shift); send M-< / M-> / M-? / M-: explicitly
         bind "Alt Shift ," { Write 27 60; }
         bind "Alt Shift ." { Write 27 62; }
         bind "Alt Shift /" { Write 27 63; }
-        // C-* is dropped; send it as CSI 42;5u (kkp in Emacs reads it as C-*)
+        bind "Alt Shift ;" { Write 27 58; }
+        // Ctrl+shifted symbols are dropped; send them as CSI <codepoint>;5u
+        // (kkp in Emacs reads them as C-*, C-<, C->, C-?, C-:)
         bind "Ctrl Shift 8" { Write 27 91 52 50 59 53 117; }
         bind "Ctrl *" { Write 27 91 52 50 59 53 117; }
+        bind "Ctrl Shift ," { Write 27 91 54 48 59 53 117; }
+        bind "Ctrl <" { Write 27 91 54 48 59 53 117; }
+        bind "Ctrl Shift ." { Write 27 91 54 50 59 53 117; }
+        bind "Ctrl >" { Write 27 91 54 50 59 53 117; }
+        bind "Ctrl Shift /" { Write 27 91 54 51 59 53 117; }
+        bind "Ctrl ?" { Write 27 91 54 51 59 53 117; }
+        bind "Ctrl Shift ;" { Write 27 91 53 56 59 53 117; }
+        bind "Ctrl :" { Write 27 91 53 56 59 53 117; }
     }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl z" { SwitchToMode "locked"; }
