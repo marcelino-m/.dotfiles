@@ -111,3 +111,14 @@ setopt IGNORE_EOF
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+magit() {
+  local dir="${1:-$PWD}"
+  dir="${dir:A}"
+  [[ -d "$dir" ]] || { echo "magit: '$1' no es un directorio" >&2; return 1; }
+
+  # escapar \ y " para Elisp
+  local esc="${dir//\\/\\\\}"
+  esc="${esc//\"/\\\"}"
+
+  emacsclient -nw -a "" -e "(magit-status \"$esc\")"
+}
