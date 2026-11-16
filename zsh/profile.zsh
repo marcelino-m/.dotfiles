@@ -62,6 +62,9 @@ if [ -d "$HOME/.opencode/bin" ] ; then
     export PATH="$HOME/.opencode/bin:$PATH"
 fi
 
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export JAVA_HOME=/var/lib/flatpak/app/com.google.AndroidStudio/current/active/files/extra/jbr
 
 # # # atuin
 # # if command -v atuin >/dev/null 2>&1; then
