@@ -30,6 +30,8 @@ config.keys = {
   { key = '*', mods = 'CTRL', action = wezterm.action.DisableDefaultAssignment },
   { key = '*', mods = 'SHIFT|CTRL', action = wezterm.action.DisableDefaultAssignment },
   { key = '8', mods = 'SHIFT|CTRL', action = wezterm.action.DisableDefaultAssignment },
+  -- With enable_kitty_keyboard, wezterm sends plain Delete as \x08 (Backspace)
+  { key = 'Delete', mods = 'NONE', action = wezterm.action.SendString '\x1b[3~' },
 }
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
